@@ -7,130 +7,83 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #F7F5F0;
-      --surface: #FFFFFF;
-      --text: #1A1A1A;
-      --muted: #6B6B6B;
-      --accent: #1A5C8A;
-      --accent-light: #E6F1FB;
-      --accent-mid: #B5D4F4;
-      --green: #0F6E56;
-      --green-light: #E1F5EE;
-      --green-mid: #9FE1CB;
-      --amber: #854F0B;
-      --amber-light: #FAEEDA;
-      --amber-mid: #FAC775;
-      --purple: #3C3489;
-      --purple-light: #EEEDFE;
-      --purple-mid: #CECBF6;
+      --bg: #F7F5F0; --surface: #FFFFFF; --text: #1A1A1A; --muted: #6B6B6B;
+      --accent: #1A5C8A; --accent-light: #E6F1FB; --accent-mid: #B5D4F4;
+      --green: #0F6E56; --green-light: #E1F5EE; --green-mid: #9FE1CB;
+      --amber: #854F0B; --amber-light: #FAEEDA; --amber-mid: #FAC775;
+      --purple: #3C3489; --purple-light: #EEEDFE; --purple-mid: #CECBF6;
+      --teal: #085041; --teal-light: #E1F5EE; --teal-mid: #5DCAA5;
       --border: rgba(0,0,0,0.08);
       --serif: 'DM Serif Display', Georgia, serif;
       --sans: 'DM Sans', system-ui, sans-serif;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--sans);
-      background: var(--bg);
-      color: var(--text);
-      font-size: 15px;
-      line-height: 1.7;
-    }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.7; }
 
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(247,245,240,0.92);
-      backdrop-filter: blur(12px);
+      background: rgba(247,245,240,0.92); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
-      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
     }
     .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--text); text-decoration: none; }
     .nav-links { display: flex; gap: 2rem; }
     .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
 
-    .hero {
-      max-width: 760px; margin: 0 auto;
-      padding: 5rem 2rem 4rem;
-      display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: start;
-    }
-    .avatar {
-      width: 90px; height: 90px; border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid var(--accent-mid);
-      flex-shrink: 0;
-    }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .hero-text h1 {
-      font-family: var(--serif);
-      font-size: 42px; line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-    .hero-text .role {
-      font-size: 13px; color: var(--muted);
-      letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .hero-text .bio {
-      font-size: 15px; color: var(--muted); line-height: 1.75;
-      max-width: 520px; margin-bottom: 1.5rem;
-    }
+    .hero { max-width: 760px; margin: 0 auto; padding: 5rem 2rem 4rem; display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: start; }
+    .avatar { width: 90px; height: 90px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent-mid); flex-shrink: 0; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 28px; color: var(--accent); }
+    .hero-text h1 { font-family: var(--serif); font-size: 42px; line-height: 1.1; margin-bottom: 0.5rem; }
+    .hero-text .role { font-size: 13px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .hero-text .bio { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 520px; margin-bottom: 1.5rem; }
     .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.75rem; }
-    .badge {
-      font-size: 12px; padding: 4px 14px; border-radius: 20px;
-      background: var(--surface); color: var(--muted);
-      border: 1px solid var(--border);
-    }
+    .badge { font-size: 12px; padding: 4px 14px; border-radius: 20px; background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
     .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn {
-      font-family: var(--sans); font-size: 13px; font-weight: 500;
-      padding: 9px 22px; border-radius: 6px;
-      cursor: pointer; text-decoration: none;
-      transition: all 0.2s; display: inline-block;
-    }
+    .btn { font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 9px 22px; border-radius: 6px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
     .btn-primary { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
     .btn-primary:hover { opacity: 0.82; }
     .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-outline:hover { background: var(--surface); }
 
     .divider { border: none; border-top: 1px solid var(--border); }
-
     section { max-width: 760px; margin: 0 auto; padding: 3.5rem 2rem; }
     .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; }
     .section-label { font-family: var(--serif); font-size: 28px; }
     .section-count { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
 
+    /* PROJECT CARDS */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
-    .project-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 14px; padding: 1.4rem;
-      transition: box-shadow 0.2s, transform 0.2s;
-      display: flex; flex-direction: column;
-    }
+    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
     .project-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
-    .project-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; margin-bottom: 14px;
-    }
+    .project-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 14px; }
     .icon-blue { background: var(--accent-light); }
     .icon-green { background: var(--green-light); }
     .icon-amber { background: var(--amber-light); }
     .icon-purple { background: var(--purple-light); }
+    .icon-teal { background: var(--teal-light); }
     .project-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
     .project-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; flex: 1; }
-    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
     .tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg); color: var(--muted); border: 1px solid var(--border); }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
     .impact { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 20px; display: inline-block; }
     .impact-blue { background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent-mid); }
     .impact-green { background: var(--green-light); color: var(--green); border: 1px solid var(--green-mid); }
     .impact-amber { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-mid); }
     .impact-purple { background: var(--purple-light); color: var(--purple); border: 1px solid var(--purple-mid); }
+    .impact-teal { background: var(--teal-light); color: var(--teal); border: 1px solid var(--teal-mid); }
+    .view-btn { font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 6px; background: var(--text); color: var(--bg); text-decoration: none; transition: opacity 0.2s; white-space: nowrap; }
+    .view-btn:hover { opacity: 0.8; }
 
+    /* DASHBOARD PREVIEW */
+    .dashboard-section { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 16px; }
+    .dashboard-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .dashboard-title { font-size: 14px; font-weight: 500; }
+    .dashboard-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .dashboard-preview { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
+
+    /* SKILLS */
     .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 3rem; }
     .skill-row { display: flex; align-items: center; gap: 12px; }
     .skill-name { font-size: 13px; color: var(--muted); min-width: 110px; }
@@ -138,21 +91,11 @@
     .skill-bar { height: 100%; border-radius: 4px; background: var(--accent); }
     .skill-pct { font-size: 12px; color: var(--muted); min-width: 30px; text-align: right; }
 
+    /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .contact-item {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1rem 1.25rem;
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; color: var(--text);
-      transition: box-shadow 0.2s;
-    }
+    .contact-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); transition: box-shadow 0.2s; }
     .contact-item:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
-    .contact-icon {
-      width: 36px; height: 36px; border-radius: 8px;
-      background: var(--bg); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; flex-shrink: 0;
-    }
+    .contact-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
     .contact-label { font-size: 11px; color: var(--muted); margin-bottom: 2px; letter-spacing: 0.04em; }
     .contact-value { font-size: 13px; font-weight: 500; }
 
@@ -167,12 +110,11 @@
 
     @media (max-width: 600px) {
       .hero { grid-template-columns: 1fr; }
-      .avatar { width: 70px; height: 70px; }
       .hero-text h1 { font-size: 30px; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
+      .skills-grid, .contact-grid { grid-template-columns: 1fr; }
       nav { padding: 0.75rem 1rem; }
       .nav-links { gap: 1rem; }
+      .card-footer { flex-direction: column; align-items: flex-start; gap: 8px; }
     }
   </style>
 </head>
@@ -182,14 +124,15 @@
   <a class="nav-logo" href="#">Kirk Lester Olayer</a>
   <div class="nav-links">
     <a href="#projects">Projects</a>
+    <a href="#dashboards">Dashboards</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="avatar">
-    <img src="ID MY FACE.jpg"></div>
+  <div class="avatar">KO</div>
   <div class="hero-text">
     <div class="role">Data Analyst · Tacloban, Eastern Visayas, PH</div>
     <h1>Kirk Lester Olayer</h1>
@@ -204,6 +147,7 @@
       <span class="badge">Excel</span>
       <span class="badge">MySQL</span>
       <span class="badge">Data Visualization</span>
+      <span class="badge">DAX</span>
     </div>
     <div class="btn-row">
       <a class="btn btn-primary" href="#contact">Get in touch</a>
@@ -215,6 +159,7 @@
 
 <hr class="divider">
 
+<!-- PROJECTS -->
 <section id="projects">
   <div class="section-header">
     <span class="section-label">Projects</span>
@@ -224,50 +169,61 @@
 
     <div class="project-card">
       <div class="project-icon icon-blue">📊</div>
-      <h3>TechNova sales performance dashboard</h3>
-      <p>Built an interactive Power BI dashboard analyzing TechNova sales data, enabling real-time tracking of regional sales performance and trends.</p>
+      <h3>TechNova sales report</h3>
+      <p>Analyzed ₱85M in total sales across Luzon, Visayas, and Mindanao. Built monthly trend charts and regional breakdowns with sales rep performance tracking.</p>
       <div class="tag-row">
         <span class="tag">Power BI</span>
-        <span class="tag">Excel</span>
         <span class="tag">DAX</span>
+        <span class="tag">Excel</span>
       </div>
-      <span class="impact impact-blue">Sales insights dashboard</span>
+      <div class="card-footer">
+        <span class="impact impact-blue">₱85M sales analyzed</span>
+        <a class="view-btn" href="TechNova_Sales_data.pdf" target="_blank">View report →</a>
+      </div>
     </div>
 
     <div class="project-card">
       <div class="project-icon icon-green">💸</div>
       <h3>Spend data dashboard</h3>
-      <p>Developed a comprehensive Power BI dashboard to visualize and monitor spending patterns, helping stakeholders identify cost-saving opportunities.</p>
+      <p>Built a Power BI dashboard tracking spending by customer segment, city, and store number — covering corporate, home office, consumer, and small business segments.</p>
       <div class="tag-row">
         <span class="tag">Power BI</span>
         <span class="tag">Data Modeling</span>
         <span class="tag">Excel</span>
       </div>
-      <span class="impact impact-green">Cost visibility improved</span>
+      <div class="card-footer">
+        <span class="impact impact-green">4 segments tracked</span>
+        <a class="view-btn" href="SPEND_DATA_DASHBOARD.pdf" target="_blank">View report →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon icon-teal">🌊</div>
+      <h3>DPWH flood control tracker</h3>
+      <p>Developed a Power BI dashboard monitoring 320 DPWH flood control projects nationwide, tracking ₱326bn budget utilization, project status, and flood incident reduction by region.</p>
+      <div class="tag-row">
+        <span class="tag">Power BI</span>
+        <span class="tag">Government Data</span>
+        <span class="tag">DAX</span>
+      </div>
+      <div class="card-footer">
+        <span class="impact impact-teal">320 projects tracked</span>
+        <a class="view-btn" href="DPWH_Flood_Control.pdf" target="_blank">View report →</a>
+      </div>
     </div>
 
     <div class="project-card">
       <div class="project-icon icon-amber">🗄️</div>
       <h3>Delivery fee SQL analysis</h3>
-      <p>Queried and filtered a deliveries database using MySQL — including filtering by delivery fee, region (NCR), and vehicle type to surface actionable logistics insights.</p>
+      <p>Queried and filtered a deliveries database using MySQL — filtering by delivery fee thresholds, region (NCR), and vehicle type to surface logistics insights.</p>
       <div class="tag-row">
         <span class="tag">MySQL</span>
         <span class="tag">SQL Querying</span>
         <span class="tag">Data Filtering</span>
       </div>
-      <span class="impact impact-amber">16+ queries executed</span>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon icon-purple">📋</div>
-      <h3>Data module analysis</h3>
-      <p>Conducted structured data analysis using Excel, applying data transformation and modeling techniques to extract meaningful patterns from raw datasets.</p>
-      <div class="tag-row">
-        <span class="tag">Excel</span>
-        <span class="tag">Data Transformation</span>
-        <span class="tag">Analysis</span>
+      <div class="card-footer">
+        <span class="impact impact-amber">16+ queries executed</span>
       </div>
-      <span class="impact impact-purple">Structured insights</span>
     </div>
 
   </div>
@@ -275,6 +231,50 @@
 
 <hr class="divider">
 
+<!-- LIVE DASHBOARDS -->
+<section id="dashboards">
+  <div class="section-header">
+    <span class="section-label">Live dashboards</span>
+    <span class="section-count">PDF previews</span>
+  </div>
+
+  <div class="dashboard-section">
+    <div class="dashboard-header">
+      <div>
+        <div class="dashboard-title">TechNova Sales Report</div>
+        <div class="dashboard-sub">₱85M total sales · 3,254 units · Luzon, Visayas, Mindanao</div>
+      </div>
+      <a class="view-btn" href="TechNova_Sales_data.pdf" target="_blank">Open PDF →</a>
+    </div>
+    <iframe class="dashboard-preview" src="TechNova_Sales_data.pdf" title="TechNova Sales Dashboard"></iframe>
+  </div>
+
+  <div class="dashboard-section">
+    <div class="dashboard-header">
+      <div>
+        <div class="dashboard-title">Spend Data Dashboard</div>
+        <div class="dashboard-sub">Customer segments · City-level spend · Store performance</div>
+      </div>
+      <a class="view-btn" href="SPEND_DATA_DASHBOARD.pdf" target="_blank">Open PDF →</a>
+    </div>
+    <iframe class="dashboard-preview" src="SPEND_DATA_DASHBOARD.pdf" title="Spend Data Dashboard"></iframe>
+  </div>
+
+  <div class="dashboard-section">
+    <div class="dashboard-header">
+      <div>
+        <div class="dashboard-title">DPWH Flood Control Project Tracker</div>
+        <div class="dashboard-sub">320 projects · ₱326bn budget · 17 regions nationwide</div>
+      </div>
+      <a class="view-btn" href="DPWH_Flood_Control.pdf" target="_blank">Open PDF →</a>
+    </div>
+    <iframe class="dashboard-preview" src="DPWH_Flood_Control.pdf" title="DPWH Flood Control Dashboard"></iframe>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
 <section id="skills">
   <div class="section-header">
     <span class="section-label">Skills</span>
@@ -284,14 +284,15 @@
     <div class="skill-row"><span class="skill-name">SQL / MySQL</span><div class="skill-bar-bg"><div class="skill-bar" style="width:82%"></div></div><span class="skill-pct">82%</span></div>
     <div class="skill-row"><span class="skill-name">Power BI</span><div class="skill-bar-bg"><div class="skill-bar" style="width:80%"></div></div><span class="skill-pct">80%</span></div>
     <div class="skill-row"><span class="skill-name">Excel</span><div class="skill-bar-bg"><div class="skill-bar" style="width:85%"></div></div><span class="skill-pct">85%</span></div>
-    <div class="skill-row"><span class="skill-name">Data visualization</span><div class="skill-bar-bg"><div class="skill-bar" style="width:78%"></div></div><span class="skill-pct">78%</span></div>
+    <div class="skill-row"><span class="skill-name">DAX</span><div class="skill-bar-bg"><div class="skill-bar" style="width:75%"></div></div><span class="skill-pct">75%</span></div>
+    <div class="skill-row"><span class="skill-name">Data visualization</span><div class="skill-bar-bg"><div class="skill-bar" style="width:80%"></div></div><span class="skill-pct">80%</span></div>
     <div class="skill-row"><span class="skill-name">Data modeling</span><div class="skill-bar-bg"><div class="skill-bar" style="width:75%"></div></div><span class="skill-pct">75%</span></div>
-    <div class="skill-row"><span class="skill-name">Data analysis</span><div class="skill-bar-bg"><div class="skill-bar" style="width:80%"></div></div><span class="skill-pct">80%</span></div>
   </div>
 </section>
 
 <hr class="divider">
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="section-header">
     <span class="section-label">Contact</span>
@@ -300,31 +301,19 @@
   <div class="contact-grid">
     <a class="contact-item" href="https://linkedin.com/in/kirkolayer" target="_blank">
       <div class="contact-icon">🔗</div>
-      <div>
-        <div class="contact-label">LINKEDIN</div>
-        <div class="contact-value">linkedin.com/in/kirkolayer</div>
-      </div>
+      <div><div class="contact-label">LINKEDIN</div><div class="contact-value">linkedin.com/in/kirkolayer</div></div>
     </a>
     <a class="contact-item" href="https://github.com/Watzx" target="_blank">
       <div class="contact-icon">⌨</div>
-      <div>
-        <div class="contact-label">GITHUB</div>
-        <div class="contact-value">github.com/Watzx</div>
-      </div>
+      <div><div class="contact-label">GITHUB</div><div class="contact-value">github.com/Watzx</div></div>
     </a>
-    <a class="contact-item" href="https://watzx.github.io/kirkolayer" target="_blank">
+    <a class="contact-item" href="#">
       <div class="contact-icon">🌐</div>
-      <div>
-        <div class="contact-label">PORTFOLIO</div>
-        <div class="contact-value">watzx.github.io/kirkolayer</div>
-      </div>
+      <div><div class="contact-label">PORTFOLIO</div><div class="contact-value">watzx.github.io/kirkolayer</div></div>
     </a>
     <a class="contact-item" href="#">
       <div class="contact-icon">📍</div>
-      <div>
-        <div class="contact-label">LOCATION</div>
-        <div class="contact-value">Tacloban, Eastern Visayas, PH</div>
-      </div>
+      <div><div class="contact-label">LOCATION</div><div class="contact-value">Tacloban, Eastern Visayas, PH</div></div>
     </a>
   </div>
 </section>
