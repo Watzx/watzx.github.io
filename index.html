@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jane Doe — Data Analyst</title>
+  <title>Kirk Lester Olayer — Data Analyst</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,6 +22,9 @@
       --amber: #854F0B;
       --amber-light: #FAEEDA;
       --amber-mid: #FAC775;
+      --purple: #3C3489;
+      --purple-light: #EEEDFE;
+      --purple-mid: #CECBF6;
       --border: rgba(0,0,0,0.08);
       --serif: 'DM Serif Display', Georgia, serif;
       --sans: 'DM Sans', system-ui, sans-serif;
@@ -37,7 +40,6 @@
       line-height: 1.7;
     }
 
-    /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
       background: rgba(247,245,240,0.92);
@@ -51,27 +53,25 @@
     .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
 
-    /* HERO */
     .hero {
-      max-width: 720px; margin: 0 auto;
+      max-width: 760px; margin: 0 auto;
       padding: 5rem 2rem 4rem;
       display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: start;
     }
     .avatar {
-      width: 80px; height: 80px; border-radius: 50%;
-      background: var(--accent-light);
+      width: 90px; height: 90px; border-radius: 50%;
+      overflow: hidden;
       border: 2px solid var(--accent-mid);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--serif); font-size: 24px; color: var(--accent);
       flex-shrink: 0;
     }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .hero-text h1 {
       font-family: var(--serif);
       font-size: 42px; line-height: 1.1;
       margin-bottom: 0.5rem;
     }
     .hero-text .role {
-      font-size: 14px; color: var(--muted);
+      font-size: 13px; color: var(--muted);
       letter-spacing: 0.1em; text-transform: uppercase;
       margin-bottom: 1rem;
     }
@@ -84,61 +84,34 @@
       font-size: 12px; padding: 4px 14px; border-radius: 20px;
       background: var(--surface); color: var(--muted);
       border: 1px solid var(--border);
-      letter-spacing: 0.02em;
     }
-    .btn-row { display: flex; gap: 10px; }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
       font-family: var(--sans); font-size: 13px; font-weight: 500;
       padding: 9px 22px; border-radius: 6px;
       cursor: pointer; text-decoration: none;
-      transition: all 0.2s;
-      display: inline-block;
+      transition: all 0.2s; display: inline-block;
     }
-    .btn-primary {
-      background: var(--text); color: var(--bg);
-      border: 1px solid var(--text);
-    }
+    .btn-primary { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
     .btn-primary:hover { opacity: 0.82; }
-    .btn-outline {
-      background: transparent; color: var(--text);
-      border: 1px solid var(--border);
-    }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-outline:hover { background: var(--surface); }
 
-    /* DIVIDER */
     .divider { border: none; border-top: 1px solid var(--border); }
 
-    /* SECTION */
-    section { max-width: 720px; margin: 0 auto; padding: 3.5rem 2rem; }
-    .section-header {
-      display: flex; align-items: baseline; gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .section-label {
-      font-family: var(--serif); font-size: 28px;
-    }
-    .section-count {
-      font-size: 12px; color: var(--muted);
-      letter-spacing: 0.06em; text-transform: uppercase;
-    }
+    section { max-width: 760px; margin: 0 auto; padding: 3.5rem 2rem; }
+    .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; }
+    .section-label { font-family: var(--serif); font-size: 28px; }
+    .section-count { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
 
-    /* PROJECTS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
     .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.4rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.4rem;
       transition: box-shadow 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
     }
-    .project-card:hover {
-      box-shadow: 0 6px 24px rgba(0,0,0,0.07);
-      transform: translateY(-2px);
-    }
+    .project-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
     .project-icon {
       width: 40px; height: 40px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
@@ -147,36 +120,24 @@
     .icon-blue { background: var(--accent-light); }
     .icon-green { background: var(--green-light); }
     .icon-amber { background: var(--amber-light); }
+    .icon-purple { background: var(--purple-light); }
     .project-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
-    .project-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+    .project-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; flex: 1; }
     .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .tag {
-      font-size: 11px; padding: 3px 10px; border-radius: 20px;
-      background: var(--bg); color: var(--muted);
-      border: 1px solid var(--border);
-    }
-    .impact-row { margin-top: auto; }
-    .impact {
-      font-size: 11px; font-weight: 500;
-      padding: 4px 10px; border-radius: 20px;
-      display: inline-block;
-    }
+    .tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg); color: var(--muted); border: 1px solid var(--border); }
+    .impact { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 20px; display: inline-block; }
     .impact-blue { background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent-mid); }
     .impact-green { background: var(--green-light); color: var(--green); border: 1px solid var(--green-mid); }
     .impact-amber { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-mid); }
+    .impact-purple { background: var(--purple-light); color: var(--purple); border: 1px solid var(--purple-mid); }
 
-    /* SKILLS */
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 3rem; }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 3rem; }
     .skill-row { display: flex; align-items: center; gap: 12px; }
     .skill-name { font-size: 13px; color: var(--muted); min-width: 110px; }
-    .skill-bar-bg {
-      flex: 1; height: 4px; background: var(--border);
-      border-radius: 4px; overflow: hidden;
-    }
+    .skill-bar-bg { flex: 1; height: 4px; background: var(--border); border-radius: 4px; overflow: hidden; }
     .skill-bar { height: 100%; border-radius: 4px; background: var(--accent); }
     .skill-pct { font-size: 12px; color: var(--muted); min-width: 30px; text-align: right; }
 
-    /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .contact-item {
       background: var(--surface); border: 1px solid var(--border);
@@ -195,26 +156,18 @@
     .contact-label { font-size: 11px; color: var(--muted); margin-bottom: 2px; letter-spacing: 0.04em; }
     .contact-value { font-size: 13px; font-weight: 500; }
 
-    /* FOOTER */
-    footer {
-      text-align: center; padding: 2rem;
-      font-size: 12px; color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
+    footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     .hero { animation: fadeUp 0.6s ease both; }
     .project-card { animation: fadeUp 0.5s ease both; }
     .project-card:nth-child(2) { animation-delay: 0.08s; }
     .project-card:nth-child(3) { animation-delay: 0.16s; }
+    .project-card:nth-child(4) { animation-delay: 0.24s; }
 
     @media (max-width: 600px) {
       .hero { grid-template-columns: 1fr; }
-      .avatar { width: 60px; height: 60px; font-size: 18px; }
+      .avatar { width: 70px; height: 70px; }
       .hero-text h1 { font-size: 30px; }
       .skills-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
@@ -226,7 +179,7 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="#">Jane Doe</a>
+  <a class="nav-logo" href="#">Kirk Lester Olayer</a>
   <div class="nav-links">
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
@@ -234,75 +187,88 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="avatar">JD</div>
+  <div class="avatar">
+    <img src="data:image/jpeg;base64,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" alt="Kirk Lester Olayer" />
+  </div>
   <div class="hero-text">
-    <div class="role">Data Analyst · 3 Years Experience</div>
-    <h1>Jane Doe</h1>
+    <div class="role">Data Analyst · Tacloban, Eastern Visayas, PH</div>
+    <h1>Kirk Lester Olayer</h1>
     <p class="bio">
       Data analyst turning raw numbers into clear, actionable decisions.
-      Specializing in business intelligence, reporting, and predictive modeling —
+      Specializing in SQL querying, Power BI dashboards, and Excel data modeling —
       always looking for the story behind the numbers.
     </p>
     <div class="badge-row">
       <span class="badge">SQL</span>
-      <span class="badge">Python</span>
-      <span class="badge">Tableau</span>
       <span class="badge">Power BI</span>
       <span class="badge">Excel</span>
+      <span class="badge">MySQL</span>
+      <span class="badge">Data Visualization</span>
     </div>
     <div class="btn-row">
       <a class="btn btn-primary" href="#contact">Get in touch</a>
       <a class="btn btn-outline" href="#projects">View projects</a>
+      <a class="btn btn-outline" href="https://linkedin.com/in/kirkolayer" target="_blank">LinkedIn</a>
     </div>
   </div>
 </div>
 
 <hr class="divider">
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="section-header">
     <span class="section-label">Projects</span>
-    <span class="section-count">3 case studies</span>
+    <span class="section-count">4 case studies</span>
   </div>
   <div class="projects-grid">
 
     <div class="project-card">
       <div class="project-icon icon-blue">📊</div>
-      <h3>Sales performance dashboard</h3>
-      <p>Built an interactive Tableau dashboard consolidating data from 4 regional teams, reducing weekly reporting time significantly.</p>
+      <h3>TechNova sales performance dashboard</h3>
+      <p>Built an interactive Power BI dashboard analyzing TechNova sales data, enabling real-time tracking of regional sales performance and trends.</p>
       <div class="tag-row">
-        <span class="tag">Tableau</span>
-        <span class="tag">SQL</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Excel</span>
+        <span class="tag">DAX</span>
+      </div>
+      <span class="impact impact-blue">Sales insights dashboard</span>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon icon-green">💸</div>
+      <h3>Spend data dashboard</h3>
+      <p>Developed a comprehensive Power BI dashboard to visualize and monitor spending patterns, helping stakeholders identify cost-saving opportunities.</p>
+      <div class="tag-row">
+        <span class="tag">Power BI</span>
+        <span class="tag">Data Modeling</span>
         <span class="tag">Excel</span>
       </div>
-      <span class="impact impact-blue">↓ 70% report time</span>
+      <span class="impact impact-green">Cost visibility improved</span>
     </div>
 
     <div class="project-card">
-      <div class="project-icon icon-green">🛒</div>
-      <h3>Customer churn analysis</h3>
-      <p>Identified key churn drivers using logistic regression and cohort analysis, enabling targeted retention campaigns.</p>
+      <div class="project-icon icon-amber">🗄️</div>
+      <h3>Delivery fee SQL analysis</h3>
+      <p>Queried and filtered a deliveries database using MySQL — including filtering by delivery fee, region (NCR), and vehicle type to surface actionable logistics insights.</p>
       <div class="tag-row">
-        <span class="tag">Python</span>
-        <span class="tag">scikit-learn</span>
-        <span class="tag">pandas</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">SQL Querying</span>
+        <span class="tag">Data Filtering</span>
       </div>
-      <span class="impact impact-green">↑ 12% retention rate</span>
+      <span class="impact impact-amber">16+ queries executed</span>
     </div>
 
     <div class="project-card">
-      <div class="project-icon icon-amber">📦</div>
-      <h3>Inventory demand forecasting</h3>
-      <p>Developed a time-series forecasting model to optimize stock levels across 200+ SKUs, reducing overstock costs.</p>
+      <div class="project-icon icon-purple">📋</div>
+      <h3>Data module analysis</h3>
+      <p>Conducted structured data analysis using Excel, applying data transformation and modeling techniques to extract meaningful patterns from raw datasets.</p>
       <div class="tag-row">
-        <span class="tag">Python</span>
-        <span class="tag">Power BI</span>
-        <span class="tag">SQL Server</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Data Transformation</span>
+        <span class="tag">Analysis</span>
       </div>
-      <span class="impact impact-amber">↓ 18% overstock cost</span>
+      <span class="impact impact-purple">Structured insights</span>
     </div>
 
   </div>
@@ -310,63 +276,61 @@
 
 <hr class="divider">
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="section-header">
     <span class="section-label">Skills</span>
     <span class="section-count">Tools & proficiency</span>
   </div>
   <div class="skills-grid">
-    <div class="skill-row"><span class="skill-name">SQL</span><div class="skill-bar-bg"><div class="skill-bar" style="width:90%"></div></div><span class="skill-pct">90%</span></div>
-    <div class="skill-row"><span class="skill-name">Python</span><div class="skill-bar-bg"><div class="skill-bar" style="width:80%"></div></div><span class="skill-pct">80%</span></div>
-    <div class="skill-row"><span class="skill-name">Tableau</span><div class="skill-bar-bg"><div class="skill-bar" style="width:85%"></div></div><span class="skill-pct">85%</span></div>
-    <div class="skill-row"><span class="skill-name">Power BI</span><div class="skill-bar-bg"><div class="skill-bar" style="width:75%"></div></div><span class="skill-pct">75%</span></div>
-    <div class="skill-row"><span class="skill-name">Excel / Sheets</span><div class="skill-bar-bg"><div class="skill-bar" style="width:95%"></div></div><span class="skill-pct">95%</span></div>
-    <div class="skill-row"><span class="skill-name">Statistics</span><div class="skill-bar-bg"><div class="skill-bar" style="width:70%"></div></div><span class="skill-pct">70%</span></div>
+    <div class="skill-row"><span class="skill-name">SQL / MySQL</span><div class="skill-bar-bg"><div class="skill-bar" style="width:82%"></div></div><span class="skill-pct">82%</span></div>
+    <div class="skill-row"><span class="skill-name">Power BI</span><div class="skill-bar-bg"><div class="skill-bar" style="width:80%"></div></div><span class="skill-pct">80%</span></div>
+    <div class="skill-row"><span class="skill-name">Excel</span><div class="skill-bar-bg"><div class="skill-bar" style="width:85%"></div></div><span class="skill-pct">85%</span></div>
+    <div class="skill-row"><span class="skill-name">Data visualization</span><div class="skill-bar-bg"><div class="skill-bar" style="width:78%"></div></div><span class="skill-pct">78%</span></div>
+    <div class="skill-row"><span class="skill-name">Data modeling</span><div class="skill-bar-bg"><div class="skill-bar" style="width:75%"></div></div><span class="skill-pct">75%</span></div>
+    <div class="skill-row"><span class="skill-name">Data analysis</span><div class="skill-bar-bg"><div class="skill-bar" style="width:80%"></div></div><span class="skill-pct">80%</span></div>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-header">
     <span class="section-label">Contact</span>
     <span class="section-count">Let's connect</span>
   </div>
   <div class="contact-grid">
-    <a class="contact-item" href="mailto:jane.doe@email.com">
-      <div class="contact-icon">✉</div>
-      <div>
-        <div class="contact-label">EMAIL</div>
-        <div class="contact-value">jane.doe@email.com</div>
-      </div>
-    </a>
-    <a class="contact-item" href="https://linkedin.com/in/janedoe" target="_blank">
+    <a class="contact-item" href="https://linkedin.com/in/kirkolayer" target="_blank">
       <div class="contact-icon">🔗</div>
       <div>
         <div class="contact-label">LINKEDIN</div>
-        <div class="contact-value">linkedin.com/in/janedoe</div>
+        <div class="contact-value">linkedin.com/in/kirkolayer</div>
       </div>
     </a>
-    <a class="contact-item" href="https://github.com/janedoe" target="_blank">
+    <a class="contact-item" href="https://github.com/Watzx" target="_blank">
       <div class="contact-icon">⌨</div>
       <div>
         <div class="contact-label">GITHUB</div>
-        <div class="contact-value">github.com/janedoe</div>
+        <div class="contact-value">github.com/Watzx</div>
       </div>
     </a>
-    <a class="contact-item" href="tel:+1234567890">
-      <div class="contact-icon">📞</div>
+    <a class="contact-item" href="https://watzx.github.io/kirkolayer" target="_blank">
+      <div class="contact-icon">🌐</div>
       <div>
-        <div class="contact-label">PHONE</div>
-        <div class="contact-value">+1 (234) 567-890</div>
+        <div class="contact-label">PORTFOLIO</div>
+        <div class="contact-value">watzx.github.io/kirkolayer</div>
+      </div>
+    </a>
+    <a class="contact-item" href="#">
+      <div class="contact-icon">📍</div>
+      <div>
+        <div class="contact-label">LOCATION</div>
+        <div class="contact-value">Tacloban, Eastern Visayas, PH</div>
       </div>
     </a>
   </div>
 </section>
 
-<footer>© 2026 Jane Doe · Data Analyst</footer>
+<footer>© 2026 Kirk Lester Olayer · Data Analyst</footer>
 
 </body>
 </html>
