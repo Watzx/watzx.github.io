@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jane Doe — Data Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5F0;
+      --surface: #FFFFFF;
+      --text: #1A1A1A;
+      --muted: #6B6B6B;
+      --accent: #1A5C8A;
+      --accent-light: #E6F1FB;
+      --accent-mid: #B5D4F4;
+      --green: #0F6E56;
+      --green-light: #E1F5EE;
+      --green-mid: #9FE1CB;
+      --amber: #854F0B;
+      --amber-light: #FAEEDA;
+      --amber-mid: #FAC775;
+      --border: rgba(0,0,0,0.08);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(247,245,240,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      max-width: 720px; margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+      display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: start;
+    }
+    .avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--accent-light);
+      border: 2px solid var(--accent-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 24px; color: var(--accent);
+      flex-shrink: 0;
+    }
+    .hero-text h1 {
+      font-family: var(--serif);
+      font-size: 42px; line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .hero-text .role {
+      font-size: 14px; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-text .bio {
+      font-size: 15px; color: var(--muted); line-height: 1.75;
+      max-width: 520px; margin-bottom: 1.5rem;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.75rem; }
+    .badge {
+      font-size: 12px; padding: 4px 14px; border-radius: 20px;
+      background: var(--surface); color: var(--muted);
+      border: 1px solid var(--border);
+      letter-spacing: 0.02em;
+    }
+    .btn-row { display: flex; gap: 10px; }
+    .btn {
+      font-family: var(--sans); font-size: 13px; font-weight: 500;
+      padding: 9px 22px; border-radius: 6px;
+      cursor: pointer; text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--text); color: var(--bg);
+      border: 1px solid var(--text);
+    }
+    .btn-primary:hover { opacity: 0.82; }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { background: var(--surface); }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    /* SECTION */
+    section { max-width: 720px; margin: 0 auto; padding: 3.5rem 2rem; }
+    .section-header {
+      display: flex; align-items: baseline; gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .section-label {
+      font-family: var(--serif); font-size: 28px;
+    }
+    .section-count {
+      font-size: 12px; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+    .project-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; margin-bottom: 14px;
+    }
+    .icon-blue { background: var(--accent-light); }
+    .icon-green { background: var(--green-light); }
+    .icon-amber { background: var(--amber-light); }
+    .project-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
+    .project-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .tag {
+      font-size: 11px; padding: 3px 10px; border-radius: 20px;
+      background: var(--bg); color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .impact-row { margin-top: auto; }
+    .impact {
+      font-size: 11px; font-weight: 500;
+      padding: 4px 10px; border-radius: 20px;
+      display: inline-block;
+    }
+    .impact-blue { background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent-mid); }
+    .impact-green { background: var(--green-light); color: var(--green); border: 1px solid var(--green-mid); }
+    .impact-amber { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-mid); }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 3rem; }
+    .skill-row { display: flex; align-items: center; gap: 12px; }
+    .skill-name { font-size: 13px; color: var(--muted); min-width: 110px; }
+    .skill-bar-bg {
+      flex: 1; height: 4px; background: var(--border);
+      border-radius: 4px; overflow: hidden;
+    }
+    .skill-bar { height: 100%; border-radius: 4px; background: var(--accent); }
+    .skill-pct { font-size: 12px; color: var(--muted); min-width: 30px; text-align: right; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .contact-item {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1rem 1.25rem;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text);
+      transition: box-shadow 0.2s;
+    }
+    .contact-item:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+    .contact-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--bg); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .contact-label { font-size: 11px; color: var(--muted); margin-bottom: 2px; letter-spacing: 0.04em; }
+    .contact-value { font-size: 13px; font-weight: 500; }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 2rem;
+      font-size: 12px; color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero { animation: fadeUp 0.6s ease both; }
+    .project-card { animation: fadeUp 0.5s ease both; }
+    .project-card:nth-child(2) { animation-delay: 0.08s; }
+    .project-card:nth-child(3) { animation-delay: 0.16s; }
+
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; }
+      .avatar { width: 60px; height: 60px; font-size: 18px; }
+      .hero-text h1 { font-size: 30px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      nav { padding: 0.75rem 1rem; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Jane Doe</a>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="avatar">JD</div>
+  <div class="hero-text">
+    <div class="role">Data Analyst · 3 Years Experience</div>
+    <h1>Jane Doe</h1>
+    <p class="bio">
+      Data analyst turning raw numbers into clear, actionable decisions.
+      Specializing in business intelligence, reporting, and predictive modeling —
+      always looking for the story behind the numbers.
+    </p>
+    <div class="badge-row">
+      <span class="badge">SQL</span>
+      <span class="badge">Python</span>
+      <span class="badge">Tableau</span>
+      <span class="badge">Power BI</span>
+      <span class="badge">Excel</span>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-outline" href="#projects">View projects</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-label">Projects</span>
+    <span class="section-count">3 case studies</span>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-icon icon-blue">📊</div>
+      <h3>Sales performance dashboard</h3>
+      <p>Built an interactive Tableau dashboard consolidating data from 4 regional teams, reducing weekly reporting time significantly.</p>
+      <div class="tag-row">
+        <span class="tag">Tableau</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Excel</span>
+      </div>
+      <span class="impact impact-blue">↓ 70% report time</span>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon icon-green">🛒</div>
+      <h3>Customer churn analysis</h3>
+      <p>Identified key churn drivers using logistic regression and cohort analysis, enabling targeted retention campaigns.</p>
+      <div class="tag-row">
+        <span class="tag">Python</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">pandas</span>
+      </div>
+      <span class="impact impact-green">↑ 12% retention rate</span>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon icon-amber">📦</div>
+      <h3>Inventory demand forecasting</h3>
+      <p>Developed a time-series forecasting model to optimize stock levels across 200+ SKUs, reducing overstock costs.</p>
+      <div class="tag-row">
+        <span class="tag">Python</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">SQL Server</span>
+      </div>
+      <span class="impact impact-amber">↓ 18% overstock cost</span>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-label">Skills</span>
+    <span class="section-count">Tools & proficiency</span>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-row"><span class="skill-name">SQL</span><div class="skill-bar-bg"><div class="skill-bar" style="width:90%"></div></div><span class="skill-pct">90%</span></div>
+    <div class="skill-row"><span class="skill-name">Python</span><div class="skill-bar-bg"><div class="skill-bar" style="width:80%"></div></div><span class="skill-pct">80%</span></div>
+    <div class="skill-row"><span class="skill-name">Tableau</span><div class="skill-bar-bg"><div class="skill-bar" style="width:85%"></div></div><span class="skill-pct">85%</span></div>
+    <div class="skill-row"><span class="skill-name">Power BI</span><div class="skill-bar-bg"><div class="skill-bar" style="width:75%"></div></div><span class="skill-pct">75%</span></div>
+    <div class="skill-row"><span class="skill-name">Excel / Sheets</span><div class="skill-bar-bg"><div class="skill-bar" style="width:95%"></div></div><span class="skill-pct">95%</span></div>
+    <div class="skill-row"><span class="skill-name">Statistics</span><div class="skill-bar-bg"><div class="skill-bar" style="width:70%"></div></div><span class="skill-pct">70%</span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-label">Contact</span>
+    <span class="section-count">Let's connect</span>
+  </div>
+  <div class="contact-grid">
+    <a class="contact-item" href="mailto:jane.doe@email.com">
+      <div class="contact-icon">✉</div>
+      <div>
+        <div class="contact-label">EMAIL</div>
+        <div class="contact-value">jane.doe@email.com</div>
+      </div>
+    </a>
+    <a class="contact-item" href="https://linkedin.com/in/janedoe" target="_blank">
+      <div class="contact-icon">🔗</div>
+      <div>
+        <div class="contact-label">LINKEDIN</div>
+        <div class="contact-value">linkedin.com/in/janedoe</div>
+      </div>
+    </a>
+    <a class="contact-item" href="https://github.com/janedoe" target="_blank">
+      <div class="contact-icon">⌨</div>
+      <div>
+        <div class="contact-label">GITHUB</div>
+        <div class="contact-value">github.com/janedoe</div>
+      </div>
+    </a>
+    <a class="contact-item" href="tel:+1234567890">
+      <div class="contact-icon">📞</div>
+      <div>
+        <div class="contact-label">PHONE</div>
+        <div class="contact-value">+1 (234) 567-890</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>© 2026 Jane Doe · Data Analyst</footer>
+
+</body>
+</html>
